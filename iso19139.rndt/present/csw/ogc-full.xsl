@@ -34,7 +34,6 @@
 			gmd:identificationInfo/*[@gco:isoType='srv:SV_ServiceIdentification']"/>
 		
 		<csw:Record>
-
 			<xsl:for-each select="gmd:fileIdentifier">
 				<dc:identifier><xsl:value-of select="gco:CharacterString"/></dc:identifier>
 			</xsl:for-each>
@@ -246,6 +245,9 @@
 				 
 			</xsl:for-each>
 			
+			<xsl:variable name="downloadLinkCustomProtocol">
+				<span>http://www.geoportale2.piemonte.it/geocatalogorp/?sca[]=<xsl:value-of select="gmd:fileIdentifier/gco:CharacterString"/>&amp;sezione=mappa</span>
+			</xsl:variable>
 			
 			<xsl:for-each select="gmd:distributionInfo/gmd:MD_Distribution">
 				<xsl:for-each select="gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
@@ -285,7 +287,6 @@
 									<xsl:value-of select="gmd:linkage/gmd:URL"/>
 								</xsl:otherwise>
 							</xsl:choose>
-
 						</dc:URI>
 					</xsl:if>
 				</xsl:for-each>
